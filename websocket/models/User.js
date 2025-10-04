@@ -20,6 +20,18 @@ const userSchema = new mongoose.Schema({
     type: [String],
     default: [],
   },
+  online: {
+    type: Boolean,
+    default: false,
+  },
+  isExports: {
+    type: Boolean,
+    default: true,
+  },
+  isScreenshots: {
+    type: Boolean,
+    default: true,
+  }
 });
 
 const User = mongoose.model("User", userSchema);
