@@ -17,11 +17,11 @@ const MessageSchema = new mongoose.Schema({
 });
 
 const ChatroomSchema = new mongoose.Schema({
-    messages: [messageSchema],
+    messages: [MessageSchema],
     users: [String]
 });
 
-const ChatRoom = mongoose.model("ChatRoom", chatRoomSchema);
+const ChatRoom = mongoose.model("ChatRoom", ChatroomSchema);
 
 module.exports = {
     Message: MessageSchema,

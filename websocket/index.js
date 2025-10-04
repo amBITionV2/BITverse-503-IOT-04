@@ -4,6 +4,8 @@ const { Server } = require("socket.io");
 const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
+const mongoose = require('mongoose');
+const fsProm = require('fs').promises;
 
 const app = express();
 const server = http.createServer(app);
@@ -27,9 +29,8 @@ async function connect() {
 	);
 	mongoose.connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
-        useUnifiedTopology: true,
-		databaseName: 'comms',
-    })
+        useUnifiedTopology: true
+	 })
     .then(() => console.log('Established connection with Database'))
     .catch((error) => console.error(error));
 
