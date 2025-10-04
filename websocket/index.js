@@ -3,6 +3,7 @@ const http = require('http');
 const { Server } = require("socket.io");
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config();
 
 const app = express();
 const server = http.createServer(app);
@@ -16,7 +17,6 @@ const clientRoutes = fs
 	.readdirSync('./routes/client')
 	.filter((file) => file.endsWith('.js'));
 
-const PORT = 3000;
 const HANDLERS_PATH = path.join(__dirname, 'handlers');
 
 const eventHandlers = new Map();
@@ -25,9 +25,10 @@ async function connect() {
 	console.log(
 		'------------------ HACKATHON - Websocket Server ------------------------------------------------',
 	);
-	mongoose.connect("mongodb://127.0.0.1:27017/chatApp", {
+	mongoose.connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+		databaseName: 'comms',
     })
     .then(() => console.log('Established connection with Database'))
     .catch((error) => console.error(error));
