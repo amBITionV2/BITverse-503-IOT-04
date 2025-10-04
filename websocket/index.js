@@ -183,6 +183,5 @@ async function handleRoutes() {
 	console.log('Registered all Routes');
 }
 
-app.use(express.static('public'));
 
 connect();
